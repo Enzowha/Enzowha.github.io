@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio E5 – BTS SIO SISR</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    :root {
+      --bg: #0d0f14;
+      --surface: #161922;
+      --surface2: #1e2230;
+      --accent: #00e5a0;
+      --accent2: #0099ff;
+      --text: #e8eaf0;
+      --muted: #7a8099;
+      --border: #252a3a;
+      --font-head: 'Syne', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-head);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13,15,20,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.9rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .nav-brand {
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-family: var(--font-mono);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 4rem 2rem;
+    }
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 48px 48px;
+      opacity: 0.4;
+    }
+    .hero-glow {
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(0,229,160,0.12) 0%, transparent 70%);
+      top: -100px; left: -100px;
+      pointer-events: none;
+    }
+    .hero-glow2 {
+      position: absolute;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(0,153,255,0.1) 0%, transparent 70%);
+      bottom: 0; right: 0;
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .hero-tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 0.25rem 0.8rem;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.1em;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      margin-bottom: 0.5rem;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero-sub {
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .hero-desc {
+      font-size: 1.1rem;
+      color: #b0b8cc;
+      max-width: 600px;
+      margin-bottom: 2rem;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary-custom {
+      background: var(--accent);
+      color: #0d0f14;
+      padding: 0.7rem 1.6rem;
+      border: none;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+      display: inline-flex; align-items: center; gap: 0.4rem;
+    }
+    .btn-primary-custom:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,229,160,0.3); color: #0d0f14; }
+    .btn-outline-custom {
+      background: transparent;
+      color: var(--text);
+      padding: 0.7rem 1.6rem;
+      border: 1px solid var(--border);
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.15s, color 0.15s;
+      display: inline-flex; align-items: center; gap: 0.4rem;
+    }
+    .btn-outline-custom:hover { border-color: var(--accent2); color: var(--accent2); }
+
+    /* ─── SECTIONS ─── */
+    section { padding: 5rem 2rem; }
+    .section-inner { max-width: 1000px; margin: 0 auto; }
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      margin-bottom: 3rem;
+    }
+    .section-title span { color: var(--accent); }
+
+    /* ─── INFOS STAGE ─── */
+    .stage-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+    .stage-card h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--text);
+    }
+    .stage-card .meta {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--accent2);
+      margin-bottom: 0.8rem;
+    }
+
+    /* ─── ACTIVITÉS GRID ─── */
+    .activities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.2rem;
+    }
+    .activity-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      transition: border-color 0.2s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .activity-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .activity-card:hover::before { transform: scaleX(1); }
+    .activity-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .activity-icon {
+      font-size: 1.6rem;
+      margin-bottom: 0.8rem;
+    }
+    .activity-card h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--text);
+    }
+    .activity-card p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .activity-tag {
+      display: inline-block;
+      margin-top: 0.8rem;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      padding: 0.2rem 0.6rem;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+    .tag-infra { border-color: var(--accent); color: var(--accent); }
+    .tag-reseau { border-color: var(--accent2); color: var(--accent2); }
+    .tag-user { border-color: #f59e0b; color: #f59e0b; }
+    .tag-ia { border-color: #a855f7; color: #a855f7; }
+
+    /* ─── TABLEAU U4 ─── */
+    .table-u4 {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      font-family: var(--font-mono);
+    }
+    .table-u4 thead tr {
+      background: var(--surface2);
+      border-bottom: 2px solid var(--accent);
+    }
+    .table-u4 th {
+      padding: 0.9rem 1rem;
+      text-align: left;
+      color: var(--accent);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .table-u4 td {
+      padding: 0.8rem 1rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+      vertical-align: top;
+    }
+    .table-u4 tr:hover td { background: var(--surface); }
+    .table-u4 .competence {
+      color: var(--accent2);
+      font-size: 0.78rem;
+    }
+    .badge-ok {
+      display: inline-block;
+      background: rgba(0,229,160,0.12);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      font-size: 0.65rem;
+      padding: 0.15rem 0.5rem;
+      margin-left: 0.4rem;
+    }
+
+    /* ─── ZABBIX ─── */
+    .post-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+    }
+    .post-card h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+    .post-card .post-meta {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+    }
+    .post-card p { color: #b0b8cc; font-size: 0.95rem; margin-bottom: 0.8rem; }
+    .post-card ul { padding-left: 1.2rem; color: #b0b8cc; font-size: 0.9rem; }
+    .post-card ul li { margin-bottom: 0.3rem; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+    footer .social { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1rem; }
+    footer .social a {
+      color: var(--muted);
+      font-size: 1.2rem;
+      transition: color 0.2s;
+    }
+    footer .social a:hover { color: var(--accent); }
+    footer p { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); }
+
+    /* ─── DIVIDER ─── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 0 2rem;
+    }
+
+    @media (max-width: 600px) {
+      .activities-grid { grid-template-columns: 1fr; }
+      .table-u4 { font-size: 0.78rem; }
+      .table-u4 th, .table-u4 td { padding: 0.6rem 0.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-brand" href="#">[ PORTFOLIO_E5 ]</a>
+    <div class="nav-links">
+      <a href="#stage">Stage</a>
+      <a href="#activites">Activités</a>
+      <a href="#synthese">Synthèse U4</a>
+      <a href="#zabbix">Zabbix</a>
+      <a href="cv.pdf">CV</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-glow2"></div>
+    <div class="hero-content">
+      <div class="hero-tag">BTS SIO · OPTION SISR · E5</div>
+      <h1>Portfolio<br><span>Administrateur</span><br>Sys / Réseaux</h1>
+      <p class="hero-sub">TonNom — CNED Poitiers &nbsp;|&nbsp; Hyper-V / Linux / Windows Server</p>
+      <p class="hero-desc">Stage de 10 semaines à la CCMSL – Communauté de Communes du Pays de Moret-sur-Loing. Administration systèmes, réseaux, support utilisateurs et projets d'innovation.</p>
+      <div class="hero-btns">
+        <a href="cv.pdf" class="btn-primary-custom">📄 Télécharger mon CV</a>
+        <a href="#synthese" class="btn-outline-custom">📊 Voir la synthèse U4</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- STAGE -->
+  <section id="stage">
+    <div class="section-inner">
+      <p class="section-label">// 01 — présentation</p>
+      <h2 class="section-title">Mon <span>Stage</span></h2>
+      <div class="stage-card">
+        <h3>CCMSL – Communauté de Communes du Pays de Moret-sur-Loing</h3>
+        <p class="meta">📅 10 semaines &nbsp;·&nbsp; 📍 Moret-sur-Loing (77) &nbsp;·&nbsp; 🏢 Service Informatique</p>
+        <p style="color:#b0b8cc; font-size:0.95rem;">
+          Stage effectué au sein du service informatique de la collectivité territoriale. Environnement Windows Server / Hyper-V / Active Directory, avec interventions variées allant de l'administration réseau à l'accompagnement des usagers dans le cadre des missions de conseiller numérique. Le service utilise un <strong style="color:var(--text)">logiciel fait maison</strong> (appelé « logiciel info ») pour la gestion des tickets et demandes d'intervention (D.I), en remplacement de GLPI.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ACTIVITÉS -->
+  <section id="activites">
+    <div class="section-inner">
+      <p class="section-label">// 02 — réalisations</p>
+      <h2 class="section-title">Activités <span>réalisées</span></h2>
+      <div class="activities-grid">
+
+        <div class="activity-card">
+          <div class="activity-icon">🖥️</div>
+          <h4>Création d'un serveur applicatif</h4>
+          <p>Déploiement d'un serveur dédié à la nouvelle application locale d'inventaire de la collectivité. Configuration complète, intégration réseau et tests de validation.</p>
+          <span class="activity-tag tag-infra">Infrastructure</span>
+        </div>
+
+        <div class="activity-card">
+          <div class="activity-icon">🤖</div>
+          <h4>IA locale (phase labo)</h4>
+          <p>Déploiement et test d'une intelligence artificielle locale sur machine virtuelle Hyper-V et sur Windows 11 en environnement de test. Présentation des résultats aux élus de la commune.</p>
+          <span class="activity-tag tag-ia">Innovation / IA</span>
+        </div>
+
+        <div class="activity-card">
+          <div class="activity-icon">📊</div>
+          <h4>Supervision réseau – Zabbix</h4>
+          <p>Installation et configuration de Zabbix pour la supervision de l'infrastructure. Création d'hôtes, définition de déclencheurs et mise en place de tableaux de bord de monitoring.</p>
+          <span class="activity-tag tag-infra">Monitoring</span>
+        </div>
+
+        <div class="activity-card">
+          <div class="activity-icon">🌐</div>
+          <h4>Adressage IP – NAS QNAP</h4>
+          <p>Configuration de l'adressage IP de plusieurs équipements NAS QNAP à l'aide de QFinder Pro. Intégration dans le plan d'adressage du réseau de la collectivité.</p>
+          <span class="activity-tag tag-reseau">Réseau</span>
+        </div>
+
+        <div class="activity-card">
+          <div class="activity-icon">🔌</div>
+          <h4>Installation switches Aruba</h4>
+          <p>Installation et configuration de commutateurs réseau Aruba. Tests de câblage et de connectivité avec un testeur de câbles professionnel (valeur ~3 000 €).</p>
+          <span class="activity-tag tag-reseau">Réseau</span>
+        </div>
+
+        <div class="activity-card">
+          <div class="activity-icon">🔧</div>
+          <h4>Câblage réseau</h4>
+          <p>Confection et remplacement de têtes de câbles Ethernet (RJ45). Réalisation de tirages et tests de continuité sur l'infrastructure filaire de la collectivité.</p>
+          <span class="activity-tag tag-reseau">Réseau</span>
+        </div>
+
+        <div class="activity-card">
+          <div class="activity-icon">💾</div>
+          <h4>Sauvegarde & PRA</h4>
+          <p>Mise en œuvre et vérification des procédures de sauvegarde des données. Contrôle de l'intégrité des sauvegardes et documentation des plans de reprise.</p>
+          <span class="activity-tag tag-infra">Infrastructure</span>
+        </div>
+
+        <div class="activity-card">
+          <div class="activity-icon">👤</div>
+          <h4>Gestion des comptes – Active Directory</h4>
+          <p>Création, modification et désactivation de comptes utilisateurs dans l'Active Directory. Gestion des groupes, des stratégies de groupe (GPO) et des droits d'accès.</p>
+          <span class="activity-tag tag-infra">Administration</span>
+        </div>
+
+        <div class="activity-card">
+          <div class="activity-icon">🖥️</div>
+          <h4>Bureau à distance & dépannage</h4>
+          <p>Assistance et dépannage à distance des utilisateurs via Bureau à Distance (RDP). Résolution d'incidents logiciels, matériels et réseau en temps réel.</p>
+          <span class="activity-tag tag-user">Support</span>
+        </div>
+
+        <div class="activity-card">
+          <div class="activity-icon">🔩</div>
+          <h4>Montage PC & paramétrage de postes</h4>
+          <p>Assemblage de postes informatiques, installation des systèmes d'exploitation, déploiement des logiciels métier et intégration au domaine Active Directory.</p>
+          <span class="activity-tag tag-user">Support</span>
+        </div>
+
+        <div class="activity-card">
+          <div class="activity-icon">📦</div>
+          <h4>Inventaire & gestion de parc</h4>
+          <p>Réalisation d'un inventaire du matériel informatique (ordinateurs, périphériques, téléphones). Mise à jour du parc dans le logiciel de gestion interne de la collectivité.</p>
+          <span class="activity-tag tag-user">Gestion de parc</span>
+        </div>
+
+        <div class="activity-card">
+          <div class="activity-icon">📱</div>
+          <h4>Gestion du parc téléphonique</h4>
+          <p>Administration et suivi du parc de téléphonie fixe et mobile. Configuration, affectation et maintenance des équipements téléphoniques de la collectivité.</p>
+          <span class="activity-tag tag-user">Gestion de parc</span>
+        </div>
+
+        <div class="activity-card">
+          <div class="activity-icon">🎫</div>
+          <h4>Gestion des tickets – Logiciel Info</h4>
+          <p>Traitement des demandes d'intervention (D.I) via le logiciel interne de ticketing de la collectivité. Suivi, priorisation et clôture des tickets utilisateurs.</p>
+          <span class="activity-tag tag-user">Support</span>
+        </div>
+
+        <div class="activity-card">
+          <div class="activity-icon">🌟</div>
+          <h4>Conseiller numérique</h4>
+          <p>Missions d'accompagnement au numérique auprès d'enfants, de personnes handicapées, de personnes âgées et d'adultes. Ateliers d'initiation, aide aux démarches en ligne et sensibilisation aux usages numériques responsables.</p>
+          <span class="activity-tag tag-user">Médiation numérique</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SYNTHESE U4 -->
+  <section id="synthese">
+    <div class="section-inner">
+      <p class="section-label">// 03 — épreuve E5</p>
+      <h2 class="section-title">Synthèse <span>U4</span></h2>
+      <div style="overflow-x:auto;">
+        <table class="table-u4">
+          <thead>
+            <tr>
+              <th>Compétence U4</th>
+              <th>Réalisation</th>
+              <th>Période</th>
+              <th>Statut</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="competence">Gestion du patrimoine informatique</span></td>
+              <td>Inventaire du parc, gestion du logiciel info (tickets/D.I), gestion parc téléphonique</td>
+              <td>Oct–Nov 2025</td>
+              <td><span class="badge-ok">✓ OK</span></td>
+            </tr>
+            <tr>
+              <td><span class="competence">Réponse aux incidents</span></td>
+              <td>Supervision Zabbix, dépannage bureau à distance, support utilisateurs</td>
+              <td>Nov 2025</td>
+              <td><span class="badge-ok">✓ OK</span></td>
+            </tr>
+            <tr>
+              <td><span class="competence">Développement de l'infrastructure</span></td>
+              <td>Installation switches Aruba, câblage RJ45, adressage IP QNAP (QFinder Pro)</td>
+              <td>Oct–Nov 2025</td>
+              <td><span class="badge-ok">✓ OK</span></td>
+            </tr>
+            <tr>
+              <td><span class="competence">Sécurité des infrastructures</span></td>
+              <td>Gestion AD (comptes & GPO), sauvegarde et vérification intégrité données</td>
+              <td>Oct–Nov 2025</td>
+              <td><span class="badge-ok">✓ OK</span></td>
+            </tr>
+            <tr>
+              <td><span class="competence">Déploiement de services</span></td>
+              <td>Déploiement serveur nouvelle application d'inventaire locale</td>
+              <td>Nov 2025</td>
+              <td><span class="badge-ok">✓ OK</span></td>
+            </tr>
+            <tr>
+              <td><span class="competence">Projet d'innovation</span></td>
+              <td>IA locale sur VM Hyper-V / Windows 11 (phase labo), présentation aux élus</td>
+              <td>Nov 2025</td>
+              <td><span class="badge-ok">✓ OK</span></td>
+            </tr>
+            <tr>
+              <td><span class="competence">Accompagnement utilisateurs</span></td>
+              <td>Montage PC, paramétrage postes, médiation numérique (conseiller numérique)</td>
+              <td>Oct–Nov 2025</td>
+              <td><span class="badge-ok">✓ OK</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ZABBIX POST -->
+  <section id="zabbix">
+    <div class="section-inner">
+      <p class="section-label">// 04 — fiche activité</p>
+      <h2 class="section-title">Supervision réseau <span>Zabbix</span></h2>
+      <div class="post-card">
+        <h3>Mise en place de la supervision avec Zabbix</h3>
+        <p class="post-meta">📅 Novembre 2025 &nbsp;·&nbsp; 🏢 CCMSL – Service Informatique &nbsp;·&nbsp; 🔧 Infrastructure / Monitoring</p>
+        <p>Dans le cadre de la mission de supervision de l'infrastructure informatique de la collectivité, j'ai été chargé d'installer et de configurer l'outil de monitoring <strong style="color:var(--text)">Zabbix</strong>.</p>
+        <p><strong style="color:var(--accent)">Objectifs :</strong></p>
+        <ul>
+          <li>Disposer d'une vue centralisée de l'état des équipements réseau et serveurs</li>
+          <li>Détecter et alerter en cas de panne ou de dégradation de performance</li>
+          <li>Historiser les métriques pour analyser les tendances</li>
+        </ul>
+        <p style="margin-top:0.8rem;"><strong style="color:var(--accent)">Réalisations :</strong></p>
+        <ul>
+          <li>Installation du serveur Zabbix sur machine virtuelle Linux</li>
+          <li>Ajout des hôtes (serveurs Windows, équipements QNAP, switches Aruba)</li>
+          <li>Configuration des items de surveillance (CPU, RAM, espace disque, disponibilité)</li>
+          <li>Définition de déclencheurs (triggers) et de seuils d'alerte</li>
+          <li>Création de tableaux de bord (dashboards) personnalisés pour le service</li>
+          <li>Documentation de la procédure d'installation et de configuration</li>
+        </ul>
+        <p style="margin-top:0.8rem;"><strong style="color:var(--accent)">Compétences mobilisées :</strong> Linux, Zabbix, SNMP, supervision réseau, virtualisation Hyper-V</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="social">
+      <a href="#"><i class="fab fa-github"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p>Portfolio E5 – BTS SIO SISR &nbsp;·&nbsp; CNED Poitiers &nbsp;·&nbsp; Stage CCMSL Moret-sur-Loing</p>
+    <p style="margin-top:0.3rem; color:#3a4055;">© 2025 – TonNom</p>
+  </footer>
+
+</body>
+</html>
