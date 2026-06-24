@@ -162,6 +162,7 @@
     /* ─── SECTIONS ─── */
     section { padding: 5rem 2rem; }
     .section-inner { max-width: 1000px; margin: 0 auto; }
+    .section-inner img { max-width: 100%; height: auto; }
     .section-label {
       font-family: var(--font-mono);
       font-size: 0.72rem;
@@ -293,7 +294,7 @@
       margin-left: 0.4rem;
     }
 
-    /* ─── ZABBIX ─── */
+    /* ─── POST CARDS ─── */
     .post-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -377,6 +378,38 @@
       margin-top: 0.4rem;
     }
 
+    /* ─── IMAGES DESIGN ─── */
+    .portfolio-img-container {
+      margin-top: 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      background: var(--surface2);
+    }
+    .portfolio-img {
+      width: 100%;
+      height: auto;
+      max-height: 400px;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.9);
+      transition: filter 0.3s ease;
+    }
+    .portfolio-img:hover {
+      filter: brightness(1);
+    }
+    .img-caption {
+      padding: 0.6rem 1rem;
+      background: var(--surface2);
+      border-top: 1px solid var(--border);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+    .img-caption span {
+      color: var(--accent);
+    }
+
     /* ─── FOOTER ─── */
     footer {
       border-top: 1px solid var(--border);
@@ -401,91 +434,13 @@
 
     @media (max-width: 600px) {
       .activities-grid { grid-template-columns: 1fr; }
-      .loisirs-grid { grid-template-columns: 1fr; }
       .table-u4 { font-size: 0.78rem; }
       .table-u4 th, .table-u4 td { padding: 0.6rem 0.6rem; }
     }
-
-    /* ─── PHOTOS ─── */
-    .photo-placeholder {
-      width: 100%;
-      height: 180px;
-      background: var(--surface2);
-      border: 2px dashed var(--border);
-      border-radius: 4px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      margin-top: 1.5rem;
-      color: var(--muted);
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      text-align: center;
-      padding: 1rem;
-    }
-    .photo-placeholder .ph-icon { font-size: 2.2rem; }
-    .photo-real {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      display: block;
-      border-radius: 4px;
-      margin-top: 1.5rem;
-      border: 1px solid var(--border);
-      filter: brightness(0.85);
-      transition: filter 0.3s;
-    }
-    .photo-real:hover { filter: brightness(1); }
-    .photo-caption {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--muted);
-      margin-top: 0.4rem;
-    }
-
-    /* ─── LOISIRS ─── */
-    .loisirs-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 1.2rem;
-    }
-    .loisir-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-      transition: transform 0.2s, border-color 0.2s;
-    }
-    .loisir-card:hover { transform: translateY(-3px); border-color: var(--accent2); }
-    .loisir-img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      display: block;
-      filter: brightness(0.8);
-      transition: filter 0.3s;
-    }
-    .loisir-card:hover .loisir-img { filter: brightness(1); }
-    .loisir-img-placeholder {
-      width: 100%;
-      height: 180px;
-      background: var(--surface2);
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3rem;
-    }
-    .loisir-body { padding: 1rem 1.2rem; }
-    .loisir-body h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem; }
-    .loisir-body p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <a class="nav-brand" href="#">[ PORTFOLIO_E5 ]</a>
     <div class="nav-links">
@@ -494,12 +449,10 @@
       <a href="#synthese">Synthèse U4</a>
       <a href="#zabbix">Zabbix</a>
       <a href="#ateliers">Ateliers</a>
-      <a href="#loisirs">Loisirs</a>
       <a href="cv.pdf">CV</a>
     </div>
   </nav>
 
-  <!-- HERO -->
   <div class="hero">
     <div class="hero-grid"></div>
     <div class="hero-glow"></div>
@@ -514,11 +467,10 @@
         <a href="#synthese" class="btn-outline-custom">📊 Voir la synthèse U4</a>
       </div>
     </div>
-  </div>
+  </nav>
 
   <div class="divider"></div>
 
-  <!-- STAGE -->
   <section id="stage">
     <div class="section-inner">
       <p class="section-label">// 01 — présentation</p>
@@ -527,19 +479,18 @@
         <h3>CCMSL – Communauté de Communes du Pays de Moret-sur-Loing</h3>
         <p class="meta">📅 10 semaines &nbsp;·&nbsp; 📍 Moret-sur-Loing (77) &nbsp;·&nbsp; 🏢 Service Informatique &nbsp;·&nbsp; 👤 Maître de stage : Serge Matakias</p>
         <p style="color:#b0b8cc; font-size:0.95rem;">
-          Stage effectué au sein du service informatique de la collectivité territoriale. Environnement Windows Server / Hyper-V / Active Directory, avec interventions variées allant de l'administration réseau à l'accompagnement des usagers dans le cadre des missions de conseiller numérique. Le service utilise un <strong style="color:var(--text)">logiciel local</strong> (appelé « logiciel info ») pour la gestion des tickets et demandes d'intervention (D.I), en remplacement de GLPI.
+          Stage effectué au sein du service informatique de la collectivité territoriale. Environnement Windows Server / Hyper-V / Active Directory, avec interventions variées allant de l'administration réseau à l'accompagnement des usagers dans le cadre des missions de conseiller numérique. Le service utilise un <strong style="color:var(--text)">logiciel local</strong> pour la gestion des tickets et demandes d'intervention (D.I), en remplacement de GLPI.
         </p>
 
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-top:1.5rem;">
-  <img src="lgc_info.jpg" alt="Logiciel info" style="width:100%; height:180px; object-fit:cover; object-position:center; border-radius:4px;">
-  <img src="lgc_info2.jpg" alt="Logiciel info 2" style="width:100%; height:180px; object-fit:cover; object-position:center; border-radius:4px;">
-</div>
-        <!-- Pour ajouter ma photo : mettre le fichier dans assets/img/ccmsl.jpg sur GitHub -->
-        <!-- puis remplacer la div ci-dessous par : <img src="assets/img/ccmsl.jpg" alt="CCMSL Moret-sur-Loing" class="photo-real"> -->
-        <div class="photo-placeholder">
-          <span class="ph-icon">📷</span>
-          <strong>Photo à ajouter</strong>
-          Déposer l'image dans <code>assets/img/ccmsl.jpg</code> sur GitHub<br>puis remplacer ce bloc par <code>&lt;img src="assets/img/ccmsl.jpg" class="photo-real"&gt;</code>
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:1rem; margin-top:1.5rem;">
+          <div class="portfolio-img-container">
+            <img src="ccmsl-mairie.jpg" alt="CCMSL Moret-sur-Loing" class="portfolio-img">
+            <div class="img-caption"><span>fig_1.1</span> : Siège de la CCMSL, Moret-sur-Loing</div>
+          </div>
+          <div class="portfolio-img-container">
+            <img src="logiciel-info-tickets.jpg" alt="Logiciel interne de gestion des incidents" class="portfolio-img">
+            <div class="img-caption"><span>fig_1.2</span> : Interface du logiciel local de gestion des D.I</div>
+          </div>
         </div>
       </div>
     </div>
@@ -547,7 +498,6 @@
 
   <div class="divider"></div>
 
-  <!-- ACTIVITÉS -->
   <section id="activites">
     <div class="section-inner">
       <p class="section-label">// 02 — réalisations</p>
@@ -578,14 +528,14 @@
         <div class="activity-card">
           <div class="activity-icon">🌐</div>
           <h4>Adressage IP – NAS QNAP</h4>
-          <p>Configuration de l'adressage IP de plusieurs équipements NAS QNAP à l'aide de QFinder Pro. Intégration dans le plan d'adressage du réseau de la collectivité.</p>
+          <p>Configuration de l'adressage IP de several équipements NAS QNAP à l'aide de QFinder Pro. Intégration dans le plan d'adressage du réseau de la collectivité.</p>
           <span class="activity-tag tag-reseau">Réseau</span>
         </div>
 
         <div class="activity-card">
           <div class="activity-icon">🔌</div>
           <h4>Installation switches Aruba</h4>
-          <p>Installation et configuration de commutateurs réseau Aruba. Tests de câblage et de connectivité avec un testeur de câbles professionnel (valeur ~3 000 €).</p>
+          <p>Installation et configuration de commutateurs réseau Aruba. Tests de câblage et de connectivité avec un testeur de câbles professionnel.</p>
           <span class="activity-tag tag-reseau">Réseau</span>
         </div>
 
@@ -648,7 +598,7 @@
         <div class="activity-card">
           <div class="activity-icon">🌟</div>
           <h4>Conseiller numérique</h4>
-          <p>Missions d'accompagnement au numérique auprès d'enfants, de personnes handicapées, de personnes âgées et d'adultes. Ateliers d'initiation, aide aux démarches en ligne et sensibilisation aux usages numériques responsables.</p>
+          <p>Missions d'accompagnement au numérique auprès d'enfants, de personnes handicapées, de personnes âgées et d'adultes. Ateliers d'initiation et sensibilisation.</p>
           <span class="activity-tag tag-user">Médiation numérique</span>
         </div>
 
@@ -658,7 +608,6 @@
 
   <div class="divider"></div>
 
-  <!-- SYNTHESE U4 -->
   <section id="synthese">
     <div class="section-inner">
       <p class="section-label">// 03 — épreuve E5</p>
@@ -724,7 +673,6 @@
 
   <div class="divider"></div>
 
-  <!-- ZABBIX POST -->
   <section id="zabbix">
     <div class="section-inner">
       <p class="section-label">// 04 — fiche activité</p>
@@ -746,20 +694,12 @@
           <li>Configuration des items de surveillance (CPU, RAM, espace disque, disponibilité)</li>
           <li>Définition de déclencheurs (triggers) et de seuils d'alerte</li>
           <li>Création de tableaux de bord (dashboards) personnalisés pour le service</li>
-          <li>Documentation de la procédure d'installation et de configuration</li>
         </ul>
         <p style="margin-top:0.8rem;"><strong style="color:var(--accent)">Compétences mobilisées :</strong> Linux, Zabbix, SNMP, supervision réseau, virtualisation Hyper-V</p>
 
-    
-        <!--Mettre le fichier dans assets/img/zabbix-dashboard.png sur GitHub -->
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-top:1.5rem;">
-  <img src="Zabbix.png" alt="Dashboard Zabbix" style="width:100%; height:180px; object-fit:cover; object-position:center; border-radius:4px;">
-  
-</div>
-        <div class="photo-placeholder" style="margin-top:1.2rem;">
-          <span class="ph-icon">🖥️</span>
-          <strong>Capture d'écran Zabbix à ajouter</strong>
-          Déposer la capture dans <code>assets/img/zabbix-dashboard.png</code><br>puis remplace ce bloc par <code>&lt;img src="assets/img/zabbix-dashboard.png" class="photo-real"&gt;</code>
+        <div class="portfolio-img-container">
+          <img src="zabbix-dashboard.png" alt="Dashboard Central de Supervision Zabbix" class="portfolio-img">
+          <div class="img-caption"><span>fig_4.1</span> : Tableau de bord d'état des triggers et serveurs supervisés sous Zabbix</div>
         </div>
       </div>
     </div>
@@ -767,7 +707,6 @@
 
   <div class="divider"></div>
 
-  <!-- ATELIERS -->
   <section id="ateliers">
     <div class="section-inner">
       <p class="section-label">// 05 — fiches descriptives E5</p>
@@ -776,13 +715,11 @@
         Deux ateliers réalisés en stage à la CCMSL, couvrant l'ensemble des compétences du bloc E5 — Administration des systèmes et des réseaux.
       </p>
 
-      <!-- ONGLETS -->
       <div class="tabs-nav">
         <button class="tab-btn active" onclick="switchTab('atelier2')">Atelier 2 — Architecture & AD</button>
         <button class="tab-btn" onclick="switchTab('atelier4')">Atelier 4 — Réseau & Sécurité</button>
       </div>
 
-      <!-- ATELIER 2 -->
       <div class="tab-panel active" id="tab-atelier2">
         <div class="post-card" style="margin-bottom:0;">
           <h3>Atelier 2 — Administration système & Active Directory</h3>
@@ -802,7 +739,7 @@
               <span class="mission-num">M2</span>
               <div class="mission-content">
                 <h5>Serveur pour l'application d'inventaire</h5>
-                <p>Création et configuration d'un serveur dédié à la nouvelle application locale d'inventaire développée en interne. Intégration au domaine, paramétrage réseau et tests de validation. (Périmètre : partie serveur uniquement.)</p>
+                <p>Création et configuration d'un serveur dédié à la nouvelle application locale d'inventaire développée en interne. Intégration au domaine, paramétrage réseau et tests de validation.</p>
                 <span class="mission-done">✓ Réalisé</span>
               </div>
             </div>
@@ -824,53 +761,54 @@
             </div>
           </div>
 
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:1rem; margin-top:1.5rem;">
+            <div class="portfolio-img-container">
+              <img src="active-directory-ou.png" alt="Structure Active Directory et utilisateurs" class="portfolio-img">
+              <div class="img-caption"><span>fig_2.1</span> : Unité d'Organisation (OU) et utilisateurs de test sous Windows Server</div>
+            </div>
+            <div class="portfolio-img-container">
+              <img src="client-win10-partage.png" alt="Mappage réseau fonctionnel" class="portfolio-img">
+              <div class="img-caption"><span>fig_2.2</span> : Poste client Windows 10 avec montage automatique du lecteur Z:</div>
+            </div>
+          </div>
+
           <p style="margin-top:1.2rem;"><strong style="color:var(--accent)">Compétences mobilisées :</strong> Windows Server, Active Directory, GPO, Hyper-V, gestion de domaine</p>
         </div>
       </div>
 
-      <!-- ATELIER 4 -->
       <div class="tab-panel" id="tab-atelier4">
         <div class="post-card" style="margin-bottom:0;">
-          <h3>Atelier 4 — Réseau, sécurité & sauvegarde</h3>
-          <p class="post-meta">📅 Oct–Nov 2025 &nbsp;·&nbsp; 🏢 CCMSL &nbsp;·&nbsp; 🔧 QNAP / QFinder Pro / Logiciel Info / Zabbix</p>
-          <p>Cet atelier couvre la supervision du réseau, la gestion des incidents via le logiciel interne de la collectivité, et la mise en place des sauvegardes sur les équipements NAS.</p>
+          <h3>Atelier 4 — Gestion réseau, Stockage & Sécurité</h3>
+          <p class="post-meta">📅 Oct–Nov 2025 &nbsp;·&nbsp; 🏢 CCMSL &nbsp;·&nbsp; 🔧 QNAP / QFinder Pro / Aruba Switches / Sauvegardes</p>
+          <p>Cet atelier traite de l'évolution matérielle et logique de la collectivité : brassage, déploiement de commutateurs HPE Aruba, adressage réseau via QFinder Pro et application des plans de sauvegarde de données (RAID / RPO).</p>
 
           <div style="margin-top:1.5rem;">
             <div class="mission-item">
               <span class="mission-num">M1</span>
               <div class="mission-content">
-                <h5>Inventaire du réseau</h5>
-                <p>Inventaire complet du parc informatique physique (postes, disques, périphériques) et inventaire des adresses IP du domaine, notamment pour la téléphonie. Utilisation de QFinder Pro pour les équipements NAS QNAP.</p>
+                <h5>Configuration réseau des NAS QNAP</h5>
+                <p>Déploiement et adressage d'équipements de stockage NAS QNAP à l'aide de l'utilitaire QFinder Pro. Intégration stricte dans le plan d'adressage IP de la collectivité.</p>
                 <span class="mission-done">✓ Réalisé</span>
               </div>
             </div>
             <div class="mission-item">
               <span class="mission-num">M2</span>
               <div class="mission-content">
-                <h5>Gestion des incidents</h5>
-                <p>Traitement autonome des tickets et demandes d'intervention (D.I) via le logiciel interne « Logiciel Info ». Dépannage en solo : résolution d'incidents matériels, logiciels et réseau. Installation du logiciel sur les postes utilisateurs.</p>
+                <h5>Intervention sur l'infrastructure physique</h5>
+                <p>Installation physique et configuration de base de nouveaux commutateurs Aruba. Tirage de lignes réseau, câblage RJ45 et test de conformité au testeur professionnel.</p>
                 <span class="mission-done">✓ Réalisé</span>
               </div>
             </div>
             <div class="mission-item">
               <span class="mission-num">M3</span>
               <div class="mission-content">
-                <h5>Déploiement du logiciel de gestion (remplace GLPI)</h5>
-                <p>Installation et configuration du logiciel interne « Logiciel Info » sur les postes de la collectivité. Ce logiciel maison remplace GLPI pour la gestion des tickets et des demandes d'intervention.</p>
-                <span class="mission-done">✓ Réalisé</span>
-              </div>
-            </div>
-            <div class="mission-item">
-              <span class="mission-num">M4</span>
-              <div class="mission-content">
-                <h5>Sécurité & sauvegarde des données</h5>
-                <p>Mise en œuvre des procédures de sauvegarde sur les NAS QNAP via QFinder Pro. Vérification de l'intégrité des sauvegardes et documentation du plan de reprise. Supervision de l'infrastructure avec Zabbix (alertes, seuils, dashboards).</p>
+                <h5>Mise en œuvre de la politique de sauvegarde</h5>
+                <p>Planification hebdomadaire des sauvegardes, externalisation selon la règle du 3-2-1 et contrôle rigoureux de l'intégrité pour l'assurance d'un Plan de Reprise d'Activité (PRA).</p>
                 <span class="mission-done">✓ Réalisé</span>
               </div>
             </div>
           </div>
-
-          <p style="margin-top:1.2rem;"><strong style="color:var(--accent)">Compétences mobilisées :</strong> QNAP, QFinder Pro, gestion d'incidents, sauvegarde, Zabbix, supervision réseau</p>
+          <p style="margin-top:1.2rem;"><strong style="color:var(--accent)">Compétences mobilisées :</strong> Switching Aruba, Adressage IP, NAS QNAP, Sécurité des sauvegardes, RAID</p>
         </div>
       </div>
 
@@ -879,94 +817,22 @@
 
   <div class="divider"></div>
 
-  <!-- LOISIRS -->
-  <section id="loisirs">
-    <div class="section-inner">
-      <p class="section-label">// 06 — à propos de moi</p>
-      <h2 class="section-title">Mes <span>Loisirs</span></h2>
-      <p style="color:#b0b8cc; font-size:0.95rem; margin-bottom:2rem; max-width:600px;">
-        En dehors de l'informatique, voici ce qui me passionne au quotidien.
-      </p>
-      <div class="loisirs-grid">
-
-        <div class="loisir-card">
-        <img src="voyage_benin.jpg" alt="Voyage" class="loisir-img">
-          <div class="loisir-img-placeholder">✈️</div>
-          <div class="loisir-body">
-            <h4>Voyage</h4>
-            <p>Découvrir de nouvelles cultures, de nouveaux paysages et de nouvelles cuisines à travers le monde.</p>
-          </div>
-        </div>
-
-        <div class="loisir-card">
-          <!-- <img src="assets/img/cuisine.jpg" alt="Cuisine" class="loisir-img"> -->
-          <div class="loisir-img-placeholder">🍳</div>
-          <div class="loisir-body">
-            <h4>Cuisine</h4>
-            <p>Tester de nouvelles recettes, explorer des saveurs du monde entier et cuisiner pour les proches.</p>
-          </div>
-        </div>
-
-        <div class="loisir-card">
-          <!-- <img src="assets/img/lecture.jpg" alt="Lecture" class="loisir-img"> -->
-          <div class="loisir-img-placeholder">📚</div>
-          <div class="loisir-body">
-            <h4>Lecture</h4>
-            <p>La lecture me permet de m'évader et d'apprendre continuellement, que ce soit de la fiction ou du non-fiction.</p>
-          </div>
-        </div>
-
-        <div class="loisir-card">
-          <!-- <img src="assets/img/anime.jpg" alt="Animé" class="loisir-img"> -->
-          <div class="loisir-img-placeholder">🎌</div>
-          <div class="loisir-body">
-            <h4>Animés</h4>
-            <p>Grand fan d'animation japonaise, j'apprécie les univers narratifs riches et l'inventivité visuelle des animés.</p>
-          </div>
-        </div>
-
-        <div class="loisir-card">
-          <!-- <img src="assets/img/films.jpg" alt="Films" class="loisir-img"> -->
-          <div class="loisir-img-placeholder">🎬</div>
-          <div class="loisir-body">
-            <h4>Cinéma</h4>
-            <p>Le cinéma est pour moi une autre forme d'évasion. J'aime explorer des genres variés, du thriller à la science-fiction.</p>
-          </div>
-        </div>
-
-        <div class="loisir-card">
-          <!-- <img src="assets/img/jeux.jpg" alt="Jeux vidéo" class="loisir-img"> -->
-          <div class="loisir-img-placeholder">🎮</div>
-          <div class="loisir-body">
-            <h4>Jeux vidéo</h4>
-            <p>Les jeux vidéo ont nourri ma curiosité pour l'informatique dès le plus jeune âge. J'aime autant les jeux solo que multijoueur.</p>
-          </div>
-        </div>
-
-      </div>
-      <p style="color:var(--muted); font-size:0.8rem; font-family:var(--font-mono); margin-top:1.5rem;">
-        💡 Pour ajouter mes photos : déposer les images dans <code style="color:var(--accent2)">assets/img/</code> sur GitHub et décommenter les balises <code style="color:var(--accent2)">&lt;img&gt;</code> dans chaque carte.
-      </p>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
   <footer>
     <div class="social">
-      <a href="#"><i class="fab fa-github"></i></a>
+      <a href="https://github.com/enzowha" target="_blank"><i class="fab fa-github"></i></a>
       <a href="#"><i class="fab fa-linkedin"></i></a>
     </div>
-    <p>Portfolio E5 – BTS SIO SISR &nbsp;·&nbsp; CNED Poitiers &nbsp;·&nbsp; Stage CCMSL Moret-sur-Loing</p>
-    <p style="margin-top:0.3rem; color:#3a4055;">© 2025 – Enzo Whannou</p>
+    <p>&copy; 2026 Enzo Whannou. Tout droits réservés. Construit pour l'épreuve E5 - SISR.</p>
   </footer>
 
-<script>
-  function switchTab(id) {
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById('tab-' + id).classList.add('active');
-    event.target.classList.add('active');
-  }
-</script>
+  <script>
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      
+      document.getElementById('tab-' + tabId).classList.add('active');
+      event.currentTarget.classList.add('active');
+    }
+  </script>
 </body>
 </html>
