@@ -390,7 +390,7 @@
       width: 100%;
       height: auto;
       max-height: 400px;
-      object-fit: cover;
+      object-fit: contain;
       display: block;
       filter: brightness(0.9);
       transition: filter 0.3s ease;
@@ -467,7 +467,7 @@
         <a href="#synthese" class="btn-outline-custom">📊 Voir la synthèse U4</a>
       </div>
     </div>
-  </nav>
+  </div>
 
   <div class="divider"></div>
 
@@ -526,21 +526,21 @@
         </div>
 
         <div class="activity-card">
-          <div class="activity-icon">🌐</div>
+          <div class="activity-icon">QNAP</div>
           <h4>Adressage IP – NAS QNAP</h4>
-          <p>Configuration de l'adressage IP de several équipements NAS QNAP à l'aide de QFinder Pro. Intégration dans le plan d'adressage du réseau de la collectivité.</p>
+          <p>Configuration de l'adressage IP de plusieurs équipements NAS QNAP à l'aide de QFinder Pro. Intégration dans le plan d'adressage du réseau de la collectivité.</p>
           <span class="activity-tag tag-reseau">Réseau</span>
         </div>
 
         <div class="activity-card">
-          <div class="activity-icon">🔌</div>
+          <div class="activity-icon">🌐</div>
           <h4>Installation switches Aruba</h4>
           <p>Installation et configuration de commutateurs réseau Aruba. Tests de câblage et de connectivité avec un testeur de câbles professionnel.</p>
           <span class="activity-tag tag-reseau">Réseau</span>
         </div>
 
         <div class="activity-card">
-          <div class="activity-icon">🔧</div>
+          <div class="activity-icon">🔌</div>
           <h4>Câblage réseau</h4>
           <p>Confection et remplacement de têtes de câbles Ethernet (RJ45). Réalisation de tirages et tests de continuité sur l'infrastructure filaire de la collectivité.</p>
           <span class="activity-tag tag-reseau">Réseau</span>
@@ -561,14 +561,14 @@
         </div>
 
         <div class="activity-card">
-          <div class="activity-icon">🖥️</div>
+          <div class="activity-icon">🔧</div>
           <h4>Bureau à distance & dépannage</h4>
           <p>Assistance et dépannage à distance des utilisateurs via Bureau à Distance (RDP). Résolution d'incidents logiciels, matériels et réseau en temps réel.</p>
           <span class="activity-tag tag-user">Support</span>
         </div>
 
         <div class="activity-card">
-          <div class="activity-icon">🔩</div>
+          <div class="activity-icon">🖥️</div>
           <h4>Montage PC & paramétrage de postes</h4>
           <p>Assemblage de postes informatiques, installation des systèmes d'exploitation, déploiement des logiciels métier et intégration au domaine Active Directory.</p>
           <span class="activity-tag tag-user">Support</span>
@@ -716,8 +716,8 @@
       </p>
 
       <div class="tabs-nav">
-        <button class="tab-btn active" onclick="switchTab('atelier2')">Atelier 2 — Architecture & AD</button>
-        <button class="tab-btn" onclick="switchTab('atelier4')">Atelier 4 — Réseau & Sécurité</button>
+        <button class="tab-btn active" id="btn-atelier2" onclick="switchTab('atelier2')">Atelier 2 — Architecture & AD</button>
+        <button class="tab-btn" id="btn-atelier4" onclick="switchTab('atelier4')">Atelier 4 — Réseau & Sécurité</button>
       </div>
 
       <div class="tab-panel active" id="tab-atelier2">
@@ -799,30 +799,19 @@
                 <span class="mission-done">✓ Réalisé</span>
               </div>
             </div>
-            <div class="mission-item">
-              <span class="mission-num">M3</span>
-              <div class="mission-content">
-                <h5>Mise en œuvre de la politique de sauvegarde</h5>
-                <p>Planification hebdomadaire des sauvegardes, externalisation selon la règle du 3-2-1 et contrôle rigoureux de l'intégrité pour l'assurance d'un Plan de Reprise d'Activité (PRA).</p>
-                <span class="mission-done">✓ Réalisé</span>
-              </div>
-            </div>
           </div>
-          <p style="margin-top:1.2rem;"><strong style="color:var(--accent)">Compétences mobilisées :</strong> Switching Aruba, Adressage IP, NAS QNAP, Sécurité des sauvegardes, RAID</p>
+          <p style="margin-top:1.2rem;"><strong style="color:var(--accent)">Compétences mobilisées :</strong> QNAP, QFinder Pro, HPE Aruba, Routage statique, Sauvegardes 3-2-1</p>
         </div>
       </div>
 
     </div>
   </section>
 
-  <div class="divider"></div>
-
   <footer>
     <div class="social">
       <a href="https://github.com/enzowha" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="#"><i class="fab fa-linkedin"></i></a>
     </div>
-    <p>&copy; 2026 Enzo Whannou. Tout droits réservés. Construit pour l'épreuve E5 - SISR.</p>
+    <p>&copy; 2026 Enzo Whannou. Tous droits réservés.</p>
   </footer>
 
   <script>
@@ -830,8 +819,13 @@
       document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
       
-      document.getElementById('tab-' + tabId).classList.add('active');
-      event.currentTarget.classList.add('active');
+      if (tabId === 'atelier2') {
+        document.getElementById('tab-atelier2').classList.add('active');
+        document.getElementById('btn-atelier2').classList.add('active');
+      } else if (tabId === 'atelier4') {
+        document.getElementById('tab-atelier4').classList.add('active');
+        document.getElementById('btn-atelier4').classList.add('active');
+      }
     }
   </script>
 </body>
