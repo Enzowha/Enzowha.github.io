@@ -6,7 +6,6 @@
   <title>Portfolio E5 – BTS SIO SISR</title>
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   <style>
     :root {
       --bg: #0d0f14;
@@ -142,7 +141,7 @@
       cursor: pointer;
       text-decoration: none;
       transition: transform 0.15s, box-shadow 0.15s;
-      display: inline-flex; align-items: center; gap: 0.4rem;
+      display: inline-flex; align-items: center; gap: 0.5rem;
     }
     .btn-primary-custom:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,229,160,0.3); color: #0d0f14; }
     .btn-outline-custom {
@@ -155,13 +154,14 @@
       cursor: pointer;
       text-decoration: none;
       transition: border-color 0.15s, color 0.15s;
-      display: inline-flex; align-items: center; gap: 0.4rem;
+      display: inline-flex; align-items: center; gap: 0.5rem;
     }
     .btn-outline-custom:hover { border-color: var(--accent2); color: var(--accent2); }
 
     /* ─── SECTIONS ─── */
     section { padding: 5rem 2rem; }
     .section-inner { max-width: 1000px; margin: 0 auto; }
+    .section-inner img { max-width: 100%; height: auto; }
     .section-label {
       font-family: var(--font-mono);
       font-size: 0.72rem;
@@ -196,7 +196,12 @@
       font-size: 0.78rem;
       color: var(--accent2);
       margin-bottom: 0.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 1.2rem;
+      align-items: center;
     }
+    .stage-card .meta span { display: inline-flex; align-items: center; gap: 0.4rem; }
 
     /* ─── ACTIVITÉS GRID ─── */
     .activities-grid {
@@ -225,8 +230,13 @@
     .activity-card:hover::before { transform: scaleX(1); }
     .activity-card:hover { border-color: var(--accent); transform: translateY(-3px); }
     .activity-icon {
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       margin-bottom: 0.8rem;
+      color: var(--accent);
+      width: 1.6rem;
+      height: 1.6rem;
+      display: flex;
+      align-items: center;
     }
     .activity-card h4 {
       font-size: 1rem;
@@ -284,7 +294,9 @@
       font-size: 0.78rem;
     }
     .badge-ok {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
       background: rgba(0,229,160,0.12);
       color: var(--accent);
       border: 1px solid var(--accent);
@@ -293,7 +305,7 @@
       margin-left: 0.4rem;
     }
 
-    /* ─── ZABBIX ─── */
+    /* ─── POST CARDS ─── */
     .post-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -310,10 +322,111 @@
       font-size: 0.75rem;
       color: var(--muted);
       margin-bottom: 1.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 1.2rem;
+      align-items: center;
     }
+    .post-card .post-meta span { display: inline-flex; align-items: center; gap: 0.4rem; }
     .post-card p { color: #b0b8cc; font-size: 0.95rem; margin-bottom: 0.8rem; }
     .post-card ul { padding-left: 1.2rem; color: #b0b8cc; font-size: 0.9rem; }
     .post-card ul li { margin-bottom: 0.3rem; }
+
+    /* ─── ATELIERS TABS ─── */
+    .tabs-nav {
+      display: flex;
+      gap: 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      padding: 0.8rem 1.8rem;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--muted);
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+      letter-spacing: 0.05em;
+    }
+    .tab-btn:hover { color: var(--text); }
+    .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+    .mission-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 1rem 1.2rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent2);
+      margin-bottom: 0.8rem;
+    }
+    .mission-num {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent2);
+      min-width: 28px;
+      padding-top: 0.1rem;
+    }
+    .mission-content h5 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+      color: var(--text);
+    }
+    .mission-content p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .mission-done {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 0.1rem 0.5rem;
+      margin-top: 0.4rem;
+    }
+
+    /* ─── IMAGES DESIGN ─── */
+    .portfolio-img-container {
+      margin-top: 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      background: var(--surface2);
+    }
+    .portfolio-img {
+      width: 100%;
+      height: auto;
+      max-height: 400px;
+      object-fit: contain;
+      display: block;
+      filter: brightness(0.9);
+      transition: filter 0.3s ease;
+    }
+    .portfolio-img:hover {
+      filter: brightness(1);
+    }
+    .img-caption {
+      padding: 0.6rem 1rem;
+      background: var(--surface2);
+      border-top: 1px solid var(--border);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+    .img-caption span {
+      color: var(--accent);
+    }
 
     /* ─── FOOTER ─── */
     footer {
@@ -346,7 +459,6 @@
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <a class="nav-brand" href="#">[ PORTFOLIO_E5 ]</a>
     <div class="nav-links">
@@ -354,11 +466,11 @@
       <a href="#activites">Activités</a>
       <a href="#synthese">Synthèse U4</a>
       <a href="#zabbix">Zabbix</a>
+      <a href="#ateliers">Ateliers</a>
       <a href="cv.pdf">CV</a>
     </div>
   </nav>
 
-  <!-- HERO -->
   <div class="hero">
     <div class="hero-grid"></div>
     <div class="hero-glow"></div>
@@ -366,35 +478,43 @@
     <div class="hero-content">
       <div class="hero-tag">BTS SIO · OPTION SISR · E5</div>
       <h1>Portfolio<br><span>Administrateur</span><br>Sys / Réseaux</h1>
-      <p class="hero-sub">TonNom — CNED Poitiers &nbsp;|&nbsp; Hyper-V / Linux / Windows Server</p>
+      <p class="hero-sub">Enzo Whannou — CNED Poitiers &nbsp;|&nbsp; Hyper-V / Linux / Windows Server</p>
       <p class="hero-desc">Stage de 10 semaines à la CCMSL – Communauté de Communes du Pays de Moret-sur-Loing. Administration systèmes, réseaux, support utilisateurs et projets d'innovation.</p>
       <div class="hero-btns">
-        <a href="cv.pdf" class="btn-primary-custom">📄 Télécharger mon CV</a>
-        <a href="#synthese" class="btn-outline-custom">📊 Voir la synthèse U4</a>
+        <a href="cv.pdf" class="btn-primary-custom"><i class="fas fa-file-pdf"></i> Télécharger mon CV</a>
+        <a href="#synthese" class="btn-outline-custom"><i class="fas fa-chart-bar"></i> Voir la synthèse U4</a>
       </div>
     </div>
   </div>
 
   <div class="divider"></div>
 
-  <!-- STAGE -->
   <section id="stage">
     <div class="section-inner">
       <p class="section-label">// 01 — présentation</p>
       <h2 class="section-title">Mon <span>Stage</span></h2>
       <div class="stage-card">
         <h3>CCMSL – Communauté de Communes du Pays de Moret-sur-Loing</h3>
-        <p class="meta">📅 10 semaines &nbsp;·&nbsp; 📍 Moret-sur-Loing (77) &nbsp;·&nbsp; 🏢 Service Informatique</p>
-        <p style="color:#b0b8cc; font-size:0.95rem;">
-          Stage effectué au sein du service informatique de la collectivité territoriale. Environnement Windows Server / Hyper-V / Active Directory, avec interventions variées allant de l'administration réseau à l'accompagnement des usagers dans le cadre des missions de conseiller numérique. Le service utilise un <strong style="color:var(--text)">logiciel fait maison</strong> (appelé « logiciel info ») pour la gestion des tickets et demandes d'intervention (D.I), en remplacement de GLPI.
+        <p class="meta">
+          <span><i class="far fa-calendar"></i> 10 semaines</span>
+          <span><i class="fas fa-map-marker-alt"></i> Moret-sur-Loing (77)</span>
+          <span><i class="fas fa-building"></i> Service Informatique</span>
+          <span><i class="fas fa-user"></i> Maître de stage : Serge Matakias</span>
         </p>
+        <p style="color:#b0b8cc; font-size:0.95rem;">
+          Stage effectué au sein du service informatique de la collectivité territoriale. Environnement Windows Server / Hyper-V / Active Directory, avec interventions variées allant de l'administration réseau à l'accompagnement des usagers dans le cadre des missions de conseiller numérique. Le service utilise un <strong style="color:var(--text)">logiciel local</strong> pour la gestion des tickets et demandes d'intervention (D.I), en remplacement de GLPI.
+        </p>
+
+        <div class="portfolio-img-container">
+          <img src="logiciel-info-tickets.jpg" alt="Logiciel interne de gestion des incidents" class="portfolio-img">
+          <div class="img-caption"><span>fig_1.1</span> : Interface du logiciel local de gestion des D.I</div>
+        </div>
       </div>
     </div>
   </section>
 
   <div class="divider"></div>
 
-  <!-- ACTIVITÉS -->
   <section id="activites">
     <div class="section-inner">
       <p class="section-label">// 02 — réalisations</p>
@@ -402,100 +522,100 @@
       <div class="activities-grid">
 
         <div class="activity-card">
-          <div class="activity-icon">🖥️</div>
+          <div class="activity-icon"><i class="fas fa-server"></i></div>
           <h4>Création d'un serveur applicatif</h4>
           <p>Déploiement d'un serveur dédié à la nouvelle application locale d'inventaire de la collectivité. Configuration complète, intégration réseau et tests de validation.</p>
           <span class="activity-tag tag-infra">Infrastructure</span>
         </div>
 
         <div class="activity-card">
-          <div class="activity-icon">🤖</div>
+          <div class="activity-icon"><i class="fas fa-robot"></i></div>
           <h4>IA locale (phase labo)</h4>
           <p>Déploiement et test d'une intelligence artificielle locale sur machine virtuelle Hyper-V et sur Windows 11 en environnement de test. Présentation des résultats aux élus de la commune.</p>
           <span class="activity-tag tag-ia">Innovation / IA</span>
         </div>
 
         <div class="activity-card">
-          <div class="activity-icon">📊</div>
+          <div class="activity-icon"><i class="fas fa-chart-line"></i></div>
           <h4>Supervision réseau – Zabbix</h4>
           <p>Installation et configuration de Zabbix pour la supervision de l'infrastructure. Création d'hôtes, définition de déclencheurs et mise en place de tableaux de bord de monitoring.</p>
           <span class="activity-tag tag-infra">Monitoring</span>
         </div>
 
         <div class="activity-card">
-          <div class="activity-icon">🌐</div>
+          <div class="activity-icon"><i class="fas fa-hdd"></i></div>
           <h4>Adressage IP – NAS QNAP</h4>
           <p>Configuration de l'adressage IP de plusieurs équipements NAS QNAP à l'aide de QFinder Pro. Intégration dans le plan d'adressage du réseau de la collectivité.</p>
           <span class="activity-tag tag-reseau">Réseau</span>
         </div>
 
         <div class="activity-card">
-          <div class="activity-icon">🔌</div>
+          <div class="activity-icon"><i class="fas fa-network-wired"></i></div>
           <h4>Installation switches Aruba</h4>
           <p>Installation et configuration de commutateurs réseau Aruba. Tests de câblage et de connectivité avec un testeur de câbles professionnel.</p>
           <span class="activity-tag tag-reseau">Réseau</span>
         </div>
 
         <div class="activity-card">
-          <div class="activity-icon">🔧</div>
+          <div class="activity-icon"><i class="fas fa-ethernet"></i></div>
           <h4>Câblage réseau</h4>
           <p>Confection et remplacement de têtes de câbles Ethernet (RJ45). Réalisation de tirages et tests de continuité sur l'infrastructure filaire de la collectivité.</p>
           <span class="activity-tag tag-reseau">Réseau</span>
         </div>
 
         <div class="activity-card">
-          <div class="activity-icon">💾</div>
+          <div class="activity-icon"><i class="fas fa-database"></i></div>
           <h4>Sauvegarde & PRA</h4>
           <p>Mise en œuvre et vérification des procédures de sauvegarde des données. Contrôle de l'intégrité des sauvegardes et documentation des plans de reprise.</p>
           <span class="activity-tag tag-infra">Infrastructure</span>
         </div>
 
         <div class="activity-card">
-          <div class="activity-icon">👤</div>
+          <div class="activity-icon"><i class="fas fa-users-cog"></i></div>
           <h4>Gestion des comptes – Active Directory</h4>
           <p>Création, modification et désactivation de comptes utilisateurs dans l'Active Directory. Gestion des groupes, des stratégies de groupe (GPO) et des droits d'accès.</p>
           <span class="activity-tag tag-infra">Administration</span>
         </div>
 
         <div class="activity-card">
-          <div class="activity-icon">🖥️</div>
+          <div class="activity-icon"><i class="fas fa-desktop"></i></div>
           <h4>Bureau à distance & dépannage</h4>
           <p>Assistance et dépannage à distance des utilisateurs via Bureau à Distance (RDP). Résolution d'incidents logiciels, matériels et réseau en temps réel.</p>
           <span class="activity-tag tag-user">Support</span>
         </div>
 
         <div class="activity-card">
-          <div class="activity-icon">🔩</div>
+          <div class="activity-icon"><i class="fas fa-tools"></i></div>
           <h4>Montage PC & paramétrage de postes</h4>
           <p>Assemblage de postes informatiques, installation des systèmes d'exploitation, déploiement des logiciels métier et intégration au domaine Active Directory.</p>
           <span class="activity-tag tag-user">Support</span>
         </div>
 
         <div class="activity-card">
-          <div class="activity-icon">📦</div>
+          <div class="activity-icon"><i class="fas fa-box"></i></div>
           <h4>Inventaire & gestion de parc</h4>
           <p>Réalisation d'un inventaire du matériel informatique (ordinateurs, périphériques, téléphones). Mise à jour du parc dans le logiciel de gestion interne de la collectivité.</p>
           <span class="activity-tag tag-user">Gestion de parc</span>
         </div>
 
         <div class="activity-card">
-          <div class="activity-icon">📱</div>
+          <div class="activity-icon"><i class="fas fa-mobile-alt"></i></div>
           <h4>Gestion du parc téléphonique</h4>
           <p>Administration et suivi du parc de téléphonie fixe et mobile. Configuration, affectation et maintenance des équipements téléphoniques de la collectivité.</p>
           <span class="activity-tag tag-user">Gestion de parc</span>
         </div>
 
         <div class="activity-card">
-          <div class="activity-icon">🎫</div>
+          <div class="activity-icon"><i class="fas fa-ticket-alt"></i></div>
           <h4>Gestion des tickets – Logiciel Info</h4>
           <p>Traitement des demandes d'intervention (D.I) via le logiciel interne de ticketing de la collectivité. Suivi, priorisation et clôture des tickets utilisateurs.</p>
           <span class="activity-tag tag-user">Support</span>
         </div>
 
         <div class="activity-card">
-          <div class="activity-icon">🌟</div>
+          <div class="activity-icon"><i class="fas fa-hands-helping"></i></div>
           <h4>Conseiller numérique</h4>
-          <p>Missions d'accompagnement au numérique auprès d'enfants, de personnes handicapées, de personnes âgées et d'adultes. Ateliers d'initiation, aide aux démarches en ligne et sensibilisation aux usages numériques responsables.</p>
+          <p>Missions d'accompagnement au numérique auprès d'enfants, de personnes handicapées, de personnes âgées et d'adultes. Ateliers d'initiation et sensibilisation.</p>
           <span class="activity-tag tag-user">Médiation numérique</span>
         </div>
 
@@ -505,7 +625,6 @@
 
   <div class="divider"></div>
 
-  <!-- SYNTHESE U4 -->
   <section id="synthese">
     <div class="section-inner">
       <p class="section-label">// 03 — épreuve E5</p>
@@ -525,43 +644,43 @@
               <td><span class="competence">Gestion du patrimoine informatique</span></td>
               <td>Inventaire du parc, gestion du logiciel info (tickets/D.I), gestion parc téléphonique</td>
               <td>Oct–Nov 2025</td>
-              <td><span class="badge-ok">✓ OK</span></td>
+              <td><span class="badge-ok"><i class="fas fa-check"></i> OK</span></td>
             </tr>
             <tr>
               <td><span class="competence">Réponse aux incidents</span></td>
               <td>Supervision Zabbix, dépannage bureau à distance, support utilisateurs</td>
               <td>Nov 2025</td>
-              <td><span class="badge-ok">✓ OK</span></td>
+              <td><span class="badge-ok"><i class="fas fa-check"></i> OK</span></td>
             </tr>
             <tr>
               <td><span class="competence">Développement de l'infrastructure</span></td>
               <td>Installation switches Aruba, câblage RJ45, adressage IP QNAP (QFinder Pro)</td>
               <td>Oct–Nov 2025</td>
-              <td><span class="badge-ok">✓ OK</span></td>
+              <td><span class="badge-ok"><i class="fas fa-check"></i> OK</span></td>
             </tr>
             <tr>
               <td><span class="competence">Sécurité des infrastructures</span></td>
               <td>Gestion AD (comptes & GPO), sauvegarde et vérification intégrité données</td>
               <td>Oct–Nov 2025</td>
-              <td><span class="badge-ok">✓ OK</span></td>
+              <td><span class="badge-ok"><i class="fas fa-check"></i> OK</span></td>
             </tr>
             <tr>
               <td><span class="competence">Déploiement de services</span></td>
               <td>Déploiement serveur nouvelle application d'inventaire locale</td>
               <td>Nov 2025</td>
-              <td><span class="badge-ok">✓ OK</span></td>
+              <td><span class="badge-ok"><i class="fas fa-check"></i> OK</span></td>
             </tr>
             <tr>
               <td><span class="competence">Projet d'innovation</span></td>
               <td>IA locale sur VM Hyper-V / Windows 11 (phase labo), présentation aux élus</td>
               <td>Nov 2025</td>
-              <td><span class="badge-ok">✓ OK</span></td>
+              <td><span class="badge-ok"><i class="fas fa-check"></i> OK</span></td>
             </tr>
             <tr>
               <td><span class="competence">Accompagnement utilisateurs</span></td>
               <td>Montage PC, paramétrage postes, médiation numérique (conseiller numérique)</td>
               <td>Oct–Nov 2025</td>
-              <td><span class="badge-ok">✓ OK</span></td>
+              <td><span class="badge-ok"><i class="fas fa-check"></i> OK</span></td>
             </tr>
           </tbody>
         </table>
@@ -571,14 +690,17 @@
 
   <div class="divider"></div>
 
-  <!-- ZABBIX POST -->
   <section id="zabbix">
     <div class="section-inner">
       <p class="section-label">// 04 — fiche activité</p>
       <h2 class="section-title">Supervision réseau <span>Zabbix</span></h2>
       <div class="post-card">
         <h3>Mise en place de la supervision avec Zabbix</h3>
-        <p class="post-meta">📅 Novembre 2025 &nbsp;·&nbsp; 🏢 CCMSL – Service Informatique &nbsp;·&nbsp; 🔧 Infrastructure / Monitoring</p>
+        <p class="post-meta">
+          <span><i class="far fa-calendar"></i> Novembre 2025</span>
+          <span><i class="fas fa-building"></i> CCMSL – Service Informatique</span>
+          <span><i class="fas fa-tools"></i> Infrastructure / Monitoring</span>
+        </p>
         <p>Dans le cadre de la mission de supervision de l'infrastructure informatique de la collectivité, j'ai été chargé d'installer et de configurer l'outil de monitoring <strong style="color:var(--text)">Zabbix</strong>.</p>
         <p><strong style="color:var(--accent)">Objectifs :</strong></p>
         <ul>
@@ -588,27 +710,152 @@
         </ul>
         <p style="margin-top:0.8rem;"><strong style="color:var(--accent)">Réalisations :</strong></p>
         <ul>
-          <li>Installation du serveur Zabbix sur machine virtuelle Linux</li>
+          <li>Installation du serveur Zabbix sur machine virtuelle</li>
           <li>Ajout des hôtes (serveurs Windows, équipements QNAP, switches Aruba)</li>
           <li>Configuration des items de surveillance (CPU, RAM, espace disque, disponibilité)</li>
           <li>Définition de déclencheurs (triggers) et de seuils d'alerte</li>
           <li>Création de tableaux de bord (dashboards) personnalisés pour le service</li>
-          <li>Documentation de la procédure d'installation et de configuration</li>
         </ul>
-        <p style="margin-top:0.8rem;"><strong style="color:var(--accent)">Compétences mobilisées :</strong> Linux, Zabbix, SNMP, supervision réseau, virtualisation Hyper-V</p>
+        <p style="margin-top:0.8rem;"><strong style="color:var(--accent)">Compétences mobilisées :</strong> Ubuntu, Zabbix, SNMP, supervision réseau, virtualisation Hyper-V</p>
+
+        <div class="portfolio-img-container">
+          <img src="zabbix-dashboard.png" alt="Dashboard Central de Supervision Zabbix" class="portfolio-img">
+          <div class="img-caption"><span>fig_4.1</span> : Tableau de bord d'état des triggers et serveurs supervisés sous Zabbix</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <div class="divider"></div>
+
+  <section id="ateliers">
+    <div class="section-inner">
+      <p class="section-label">// 05 — fiches descriptives E5</p>
+      <h2 class="section-title">Ateliers <span>Professionnels</span></h2>
+      <p style="color:#b0b8cc; font-size:0.95rem; margin-bottom:2rem; max-width:640px;">
+        Deux ateliers réalisés en stage à la CCMSL, couvrant l'ensemble des compétences du bloc E5 — Administration des systèmes et des réseaux.
+      </p>
+
+      <div class="tabs-nav">
+        <button class="tab-btn active" id="btn-atelier2" onclick="switchTab('atelier2')">Atelier 2 — Architecture & AD</button>
+        <button class="tab-btn" id="btn-atelier4" onclick="switchTab('atelier4')">Atelier 4 — Réseau & Sécurité</button>
+      </div>
+
+      <div class="tab-panel active" id="tab-atelier2">
+        <div class="post-card" style="margin-bottom:0;">
+          <h3>Atelier 2 — Administration système & Active Directory</h3>
+          <p class="post-meta">
+            <span><i class="far fa-calendar"></i> Oct–Nov 2025</span>
+            <span><i class="fas fa-building"></i> CCMSL</span>
+            <span><i class="fas fa-tools"></i> Windows Server / Active Directory / Hyper-V</span>
+          </p>
+          <p>Dans le cadre de cet atelier, j'ai administré l'infrastructure système de la collectivité : gestion des comptes, stratégies de groupe et déploiement d'un serveur applicatif pour la nouvelle application d'inventaire interne.</p>
+
+          <div style="margin-top:1.5rem;">
+            <div class="mission-item">
+              <span class="mission-num">M1</span>
+              <div class="mission-content">
+                <h5>Maquette de l'architecture système</h5>
+                <p>Analyse et documentation de l'architecture existante (domaine AD, serveurs Hyper-V, postes clients). Réalisation d'un schéma réseau de l'infrastructure de la collectivité.</p>
+                <span class="mission-done"><i class="fas fa-check"></i> Réalisé</span>
+              </div>
+            </div>
+            <div class="mission-item">
+              <span class="mission-num">M2</span>
+              <div class="mission-content">
+                <h5>Serveur pour l'application d'inventaire</h5>
+                <p>Création et configuration d'un serveur dédié à la nouvelle application locale d'inventaire développée en interne. Intégration au domaine, paramétrage réseau et tests de validation.</p>
+                <span class="mission-done"><i class="fas fa-check"></i> Réalisé</span>
+              </div>
+            </div>
+            <div class="mission-item">
+              <span class="mission-num">M3</span>
+              <div class="mission-content">
+                <h5>Sécurité des partages & stratégies de groupe (GPO)</h5>
+                <p>Mise en place de GPO sur le domaine Active Directory : restrictions d'accès, politiques de mot de passe, mappage de lecteurs réseau, planification des connexions utilisateurs.</p>
+                <span class="mission-done"><i class="fas fa-check"></i> Réalisé</span>
+              </div>
+            </div>
+            <div class="mission-item">
+              <span class="mission-num">M4</span>
+              <div class="mission-content">
+                <h5>Gestion des comptes utilisateurs & domaine</h5>
+                <p>Création, modification et désactivation de comptes dans l'AD. Ajout de machines au domaine, gestion des groupes de sécurité et des droits d'accès aux ressources partagées.</p>
+                <span class="mission-done"><i class="fas fa-check"></i> Réalisé</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:1rem; margin-top:1.5rem;">
+            <div class="portfolio-img-container">
+              <img src="active-directory-ou.png" alt="Structure Active Directory et utilisateurs" class="portfolio-img">
+              <div class="img-caption"><span>fig_2.1</span> : Unité d'Organisation (OU) et utilisateurs de test sous Windows Server</div>
+            </div>
+            <div class="portfolio-img-container">
+              <img src="client-win10-partage.png" alt="Mappage réseau fonctionnel" class="portfolio-img">
+              <div class="img-caption"><span>fig_2.2</span> : Poste client Windows 10 avec montage automatique du lecteur Z:</div>
+            </div>
+          </div>
+
+          <p style="margin-top:1.2rem;"><strong style="color:var(--accent)">Compétences mobilisées :</strong> Windows Server, Active Directory, GPO, Hyper-V, gestion de domaine</p>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="tab-atelier4">
+        <div class="post-card" style="margin-bottom:0;">
+          <h3>Atelier 4 — Gestion réseau, Stockage & Sécurité</h3>
+          <p class="post-meta">
+            <span><i class="far fa-calendar"></i> Oct–Nov 2025</span>
+            <span><i class="fas fa-building"></i> CCMSL</span>
+            <span><i class="fas fa-tools"></i> QNAP / QFinder Pro / Aruba Switches / Sauvegardes</span>
+          </p>
+          <p>Cet atelier traite de l'évolution matérielle et logique de la collectivité : brassage, déploiement de commutateurs HPE Aruba, adressage réseau via QFinder Pro et application des plans de sauvegarde de données (RAID / RPO).</p>
+
+          <div style="margin-top:1.5rem;">
+            <div class="mission-item">
+              <span class="mission-num">M1</span>
+              <div class="mission-content">
+                <h5>Configuration réseau des NAS QNAP</h5>
+                <p>Déploiement et adressage d'équipements de stockage NAS QNAP à l'aide de l'utilitaire QFinder Pro. Intégration stricte dans le plan d'adressage IP de la collectivité.</p>
+                <span class="mission-done"><i class="fas fa-check"></i> Réalisé</span>
+              </div>
+            </div>
+            <div class="mission-item">
+              <span class="mission-num">M2</span>
+              <div class="mission-content">
+                <h5>Intervention sur l'infrastructure physique</h5>
+                <p>Installation physique et configuration de base de nouveaux commutateurs Aruba. Tirage de lignes réseau, câblage RJ45 et test de conformité au testeur professionnel.</p>
+                <span class="mission-done"><i class="fas fa-check"></i> Réalisé</span>
+              </div>
+            </div>
+          </div>
+          <p style="margin-top:1.2rem;"><strong style="color:var(--accent)">Compétences mobilisées :</strong> Linux, QNAP, QFinder Pro, HPE Aruba, Routage statique, Sauvegardes 3-2-1</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <footer>
     <div class="social">
-      <a href="#"><i class="fab fa-github"></i></a>
-      <a href="#"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/enzowha" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
     </div>
-    <p>Portfolio E5 – BTS SIO SISR &nbsp;·&nbsp; CNED Poitiers &nbsp;·&nbsp; Stage CCMSL Moret-sur-Loing</p>
-    <p style="margin-top:0.3rem; color:#3a4055;">© 2025 – TonNom</p>
+    <p>&copy; 2026 Enzo Whannou. Tous droits réservés.</p>
   </footer>
 
+  <script>
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+
+      if (tabId === 'atelier2') {
+        document.getElementById('tab-atelier2').classList.add('active');
+        document.getElementById('btn-atelier2').classList.add('active');
+      } else if (tabId === 'atelier4') {
+        document.getElementById('tab-atelier4').classList.add('active');
+        document.getElementById('btn-atelier4').classList.add('active');
+      }
+    }
+  </script>
 </body>
 </html>
